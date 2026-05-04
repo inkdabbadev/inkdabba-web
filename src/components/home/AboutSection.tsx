@@ -63,6 +63,7 @@ function Word({ word, progress, range }: WordProps) {
       
       <motion.span 
         style={{ 
+          WebkitTextStroke: "2px rgba(255, 244, 230, 0.95)",
           opacity, 
           y, 
           rotateX,
@@ -70,9 +71,8 @@ function Word({ word, progress, range }: WordProps) {
           filter: blur,
           scale,
           transformOrigin: "center center"
-        }} 
+        } as any} 
         className="text-transparent inline-block drop-shadow-[0_0_20px_rgba(255,255,255,0.15)] transition-all duration-300 hover:text-vermilion hover:[-webkit-text-stroke:0px] cursor-crosshair"
-        style={{ WebkitTextStroke: "2px rgba(255, 244, 230, 0.95)", opacity, y, rotateX, rotateY, filter: blur, scale, transformOrigin: "center center" } as any}
       >
         {word}
       </motion.span>

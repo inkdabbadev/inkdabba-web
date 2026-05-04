@@ -21,9 +21,9 @@ export default function ContactSection() {
               transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             >
               <h2 className="font-display text-6xl md:text-7xl lg:text-[6rem] uppercase text-warm-white leading-[0.9] tracking-tighter drop-shadow-lg">
-                LET'S BUILD <br />
+                LET&apos;S BUILD <br />
                 <span className="text-vermilion">SOMETHING</span> <br />
-                PEOPLE CAN'T <br />
+                PEOPLE CAN&apos;T <br />
                 <span className="text-transparent" style={{ WebkitTextStroke: "2px #F2E8D8" }}>IGNORE.</span>
               </h2>
             </motion.div>

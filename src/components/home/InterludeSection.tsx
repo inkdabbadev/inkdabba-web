@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, MotionValue, useScroll, useTransform } from "framer-motion";
 
 interface InterludeSectionProps {
   texts: string[];
@@ -27,51 +27,56 @@ export default function InterludeSection({ texts }: InterludeSectionProps) {
         />
 
         <div className="relative w-full max-w-7xl px-4 flex items-center justify-center">
-          {texts.map((text, index) => {
-            const start = index / texts.length;
-            const peak = start + (0.5 / texts.length);
-            const end = start + (1 / texts.length);
-            
-            // Map scroll to dramatic Smash Cut Effect
-            const opacity = useTransform(
-              scrollYProgress,
-              [start, peak, end],
-              [0, 1, 0]
-            );
-            
-            const scale = useTransform(
-              scrollYProgress,
-              [start, peak, end],
-              [2, 1, 0.8]
-            );
-            
-            const blur = useTransform(
-              scrollYProgress,
-              [start, peak, end],
-              ["blur(20px)", "blur(0px)", "blur(10px)"]
-            );
-
-            return (
-              <motion.h3 
-                key={index}
-                className={`absolute text-center font-display uppercase tracking-tight w-full ${
-                  index === texts.length - 1 
-                    ? "text-vermilion text-[8vw] md:text-[8rem] lg:text-[10rem] leading-[0.85]" 
-                    : "text-warm-white text-[6vw] md:text-[6rem] lg:text-[8rem] leading-[0.85]"
-                }`}
-                style={{ 
-                  opacity, 
-                  scale, 
-                  filter: blur,
-                  transformOrigin: "center center"
-                }}
-              >
-                {text}
-              </motion.h3>
-            );
-          })}
+          {texts.map((text, index) => (
+            <InterludeText
+              key={index}
+              text={text}
+              index={index}
+              total={texts.length}
+              scrollYProgress={scrollYProgress}
+            />
+          ))}
         </div>
       </div>
     </section>
+  );
+}
+
+function InterludeText({
+  text,
+  index,
+  total,
+  scrollYProgress,
+}: {
+  text: string;
+  index: number;
+  total: number;
+  scrollYProgress: MotionValue<number>;
+}) {
+  const start = index / total;
+  const peak = start + (0.5 / total);
+  const end = start + (1 / total);
+
+  // Map scroll to dramatic Smash Cut Effect
+  const opacity = useTransform(scrollYProgress, [start, peak, end], [0, 1, 0]);
+  const scale = useTransform(scrollYProgress, [start, peak, end], [2, 1, 0.8]);
+  const blur = useTransform(scrollYProgress, [start, peak, end], ["blur(20px)", "blur(0px)", "blur(10px)"]);
+
+  return (
+    <motion.h3
+      className={`absolute text-center font-display uppercase tracking-tight w-full ${
+        index === total - 1
+          ? "text-vermilion text-[8vw] md:text-[8rem] lg:text-[10rem] leading-[0.85]"
+          : "text-warm-white text-[6vw] md:text-[6rem] lg:text-[8rem] leading-[0.85]"
+      }`}
+      style={{
+        opacity,
+        scale,
+        filter: blur,
+        transformOrigin: "center center",
+      }}
+    >
+      {text}
+    </motion.h3>
   );
 }

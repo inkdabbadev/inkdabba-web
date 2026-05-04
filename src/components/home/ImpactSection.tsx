@@ -27,7 +27,7 @@ export default function ImpactSection() {
       <div className="relative z-10 w-full flex flex-col items-center gap-20 md:gap-32">
         <motion.div style={{ y: y1 }} className="text-center w-full px-4 mix-blend-difference pointer-events-none">
           <h2 className="font-display text-[12vw] md:text-[8vw] text-warm-white leading-[0.8] uppercase tracking-tighter">
-            WE DON'T DO
+            WE DON&apos;T DO
           </h2>
           <h2 className="font-display text-[20vw] md:text-[14vw] text-vermilion leading-[0.8] uppercase tracking-tighter md:ml-24">
             QUIET.
