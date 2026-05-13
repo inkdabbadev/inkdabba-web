@@ -67,7 +67,7 @@ export default function ShowcaseSection() {
               <div className="absolute inset-0 bg-gradient-to-t from-ink-black/95 via-ink-black/40 to-transparent opacity-80 group-hover:opacity-90 transition-opacity duration-700" />
               
               <div className="absolute bottom-0 left-0 p-8 md:p-12 translate-y-12 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]">
-                <span className="font-body text-[0.7rem] md:text-sm font-bold tracking-[0.4em] text-vermilion uppercase block mb-4">{item.category}</span>
+                <span className="font-body text-[0.7rem] md:text-sm font-bold tracking-[0.4em] text-cmyk-cyan uppercase block mb-4">{item.category}</span>
                 <h3 className="font-display text-5xl md:text-7xl text-warm-white uppercase tracking-tight leading-none drop-shadow-[0_10px_20px_rgba(0,0,0,0.8)]">{item.title}</h3>
               </div>
             </motion.div>

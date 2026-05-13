@@ -64,14 +64,14 @@ export const fadeUp: Variants = {
   },
 };
 
-/** Fade with a gentle blur-to-sharp resolve. */
+/** Soft fade without filter work; keeps reveals light on the compositor. */
 export const fadeBlur: Variants = {
-  hidden: { opacity: 0, y: 10, filter: "blur(8px)" },
+  hidden: { opacity: 0, y: 12, scale: 0.99 },
   visible: {
     opacity: 1,
     y: 0,
-    filter: "blur(0px)",
-    transition: { duration: durations.lg, ease: easePremium },
+    scale: 1,
+    transition: { duration: durations.md, ease: easePremium },
   },
 };
 

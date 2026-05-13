@@ -59,7 +59,7 @@ function Word({ word, progress, range }: WordProps) {
   return (
     <span className="relative mt-2 md:mt-4 inline-block" style={{ perspective: 2000 }}>
       {/* Ghost text for trailing effect */}
-      <span className="absolute inset-0 opacity-10 text-vermilion blur-md mix-blend-screen">{word}</span>
+      <span className="absolute inset-0 opacity-10 text-cmyk-magenta blur-md mix-blend-screen">{word}</span>
       
       <motion.span 
         style={{ 
@@ -72,7 +72,7 @@ function Word({ word, progress, range }: WordProps) {
           scale,
           transformOrigin: "center center"
         } as any} 
-        className="text-transparent inline-block drop-shadow-[0_0_20px_rgba(255,255,255,0.15)] transition-all duration-300 hover:text-vermilion hover:[-webkit-text-stroke:0px] cursor-crosshair"
+        className="text-transparent inline-block drop-shadow-[0_0_20px_rgba(255,255,255,0.15)] transition-all duration-300 hover:text-cmyk-yellow hover:[-webkit-text-stroke:0px] cursor-crosshair"
       >
         {word}
       </motion.span>

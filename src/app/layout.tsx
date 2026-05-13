@@ -64,7 +64,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#f5f0e8",
+  themeColor: "#0B0A09",
   width: "device-width",
   initialScale: 1,
 };
@@ -77,11 +77,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         {/* Advanced Premium Background Grid */}
         <div className="fixed inset-0 z-[-1] pointer-events-none overflow-hidden">
           {/* Subtle Grid Lines */}
-          <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff08_1px,transparent_1px),linear-gradient(to_bottom,#ffffff08_1px,transparent_1px)] bg-[size:8rem_8rem] [mask-image:radial-gradient(ellipse_100%_100%_at_50%_50%,black_10%,transparent_80%)]" />
+          <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(0,174,239,0.08)_1px,transparent_1px),linear-gradient(to_bottom,rgba(236,0,140,0.07)_1px,transparent_1px)] bg-[size:8rem_8rem] [mask-image:radial-gradient(ellipse_100%_100%_at_50%_50%,black_10%,transparent_80%)]" />
           
-          {/* Subtle glowing orbs in the background */}
-          <div className="absolute top-[-20%] left-[-10%] w-[50vw] h-[50vw] rounded-full bg-vermilion/5 blur-[120px] mix-blend-screen" />
-          <div className="absolute bottom-[-20%] right-[-10%] w-[40vw] h-[40vw] rounded-full bg-warm-white/5 blur-[100px] mix-blend-screen" />
+          {/* CMYK press wash */}
+          <div className="absolute top-[-20%] left-[-10%] w-[50vw] h-[50vw] rounded-full bg-cmyk-cyan/5 blur-[120px] mix-blend-screen" />
+          <div className="absolute bottom-[-20%] right-[-10%] w-[40vw] h-[40vw] rounded-full bg-cmyk-magenta/5 blur-[100px] mix-blend-screen" />
         </div>
 
         <CursorProvider>

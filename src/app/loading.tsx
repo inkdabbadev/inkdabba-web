@@ -60,34 +60,26 @@ export default function Loading() {
 
   return (
     <div className="relative min-h-screen overflow-hidden bg-[#f4eee3] text-ink">
-      <motion.div
+      <div
         aria-hidden
         className="pointer-events-none absolute inset-0"
-        animate={
-          reduce
-            ? undefined
-            : {
-                background: [
-                  "radial-gradient(circle at 18% 20%, rgba(249,102,91,0.16), transparent 22%), radial-gradient(circle at 78% 18%, rgba(255,255,255,0.84), transparent 18%), linear-gradient(180deg, #f7f3eb 0%, #f0e8db 100%)",
-                  "radial-gradient(circle at 22% 26%, rgba(249,102,91,0.24), transparent 26%), radial-gradient(circle at 70% 20%, rgba(255,255,255,0.92), transparent 18%), linear-gradient(180deg, #f7f3eb 0%, #ede3d4 100%)",
-                  "radial-gradient(circle at 18% 20%, rgba(249,102,91,0.16), transparent 22%), radial-gradient(circle at 78% 18%, rgba(255,255,255,0.84), transparent 18%), linear-gradient(180deg, #f7f3eb 0%, #f0e8db 100%)",
-                ],
-              }
-        }
-        transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+        style={{
+          background:
+            "radial-gradient(circle at 18% 20%, rgba(0,174,239,0.14), transparent 22%), radial-gradient(circle at 76% 18%, rgba(236,0,140,0.12), transparent 20%), linear-gradient(180deg, #f7f3eb 0%, #f0e8db 100%)",
+        }}
       />
 
       <div className="pointer-events-none absolute inset-0 noise opacity-[0.04] mix-blend-multiply" />
 
       <motion.div
         aria-hidden
-        className="pointer-events-none absolute left-[-10rem] top-[-8rem] h-[24rem] w-[24rem] rounded-full bg-[#F9665B]/18 blur-[100px]"
+        className="pointer-events-none absolute left-[-10rem] top-[-8rem] h-[24rem] w-[24rem] rounded-full bg-cmyk-cyan/16 blur-[100px] will-change-transform transform-gpu"
         animate={reduce ? undefined : { x: [0, 34, 0], y: [0, 24, 0] }}
         transition={{ duration: 8.2, repeat: Infinity, ease: "easeInOut" }}
       />
       <motion.div
         aria-hidden
-        className="pointer-events-none absolute bottom-[-9rem] right-[-7rem] h-[20rem] w-[20rem] rounded-full bg-black/10 blur-[76px]"
+        className="pointer-events-none absolute bottom-[-9rem] right-[-7rem] h-[20rem] w-[20rem] rounded-full bg-cmyk-magenta/12 blur-[76px] will-change-transform transform-gpu"
         animate={reduce ? undefined : { x: [0, -26, 0], y: [0, -18, 0] }}
         transition={{ duration: 9, repeat: Infinity, ease: "easeInOut" }}
       />
@@ -100,9 +92,9 @@ export default function Loading() {
               <AnimatePresence mode="wait">
                 <motion.p
                   key={loadingLines[lineIndex]}
-                  initial={reduce ? undefined : { opacity: 0, y: 14, filter: "blur(8px)" }}
-                  animate={reduce ? undefined : { opacity: 1, y: 0, filter: "blur(0px)" }}
-                  exit={reduce ? undefined : { opacity: 0, y: -14, filter: "blur(8px)" }}
+                  initial={reduce ? undefined : { opacity: 0, y: 12 }}
+                  animate={reduce ? undefined : { opacity: 1, y: 0 }}
+                  exit={reduce ? undefined : { opacity: 0, y: -12 }}
                   transition={{ duration: 0.5, ease: [0.22, 1, 0.32, 1] }}
                   className="brand-body-copy max-w-[20rem] text-right text-[0.98rem] text-ink/58"
                 >
@@ -142,7 +134,7 @@ export default function Loading() {
               <motion.div
                 animate={reduce ? undefined : { rotate: [-5, -2, -5] }}
                 transition={{ duration: 6.4, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute left-1/2 top-1/2 z-10 w-[118%] max-w-[68rem] -translate-x-1/2 -translate-y-1/2"
+                className="absolute left-1/2 top-1/2 z-10 w-[118%] max-w-[68rem] -translate-x-1/2 -translate-y-1/2 will-change-transform transform-gpu"
               >
                 <div className="rounded-[2rem] border border-black/14 bg-[#111214] px-4 py-4 shadow-[0_34px_100px_-40px_rgba(17,18,20,0.42)]">
                   <div className="space-y-4">
@@ -150,7 +142,7 @@ export default function Loading() {
 
                     <div className="overflow-hidden rounded-[1.2rem] border border-white/8 bg-[#0c0d10] px-3 py-3">
                       <motion.div
-                        className="flex min-w-max gap-3"
+                        className="flex min-w-max gap-3 will-change-transform transform-gpu"
                         animate={reduce ? undefined : { x: ["0%", "-50%"] }}
                         transition={reduce ? undefined : { duration: 12.5, repeat: Infinity, ease: "linear" }}
                       >
@@ -203,7 +195,7 @@ export default function Loading() {
               <motion.div
                 animate={reduce ? undefined : { y: [0, -12, 0], rotate: [6, 8, 6] }}
                 transition={{ duration: 5.2, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute right-[10%] top-[12%] z-20 rounded-full border border-black/8 bg-white/72 px-4 py-2 shadow-[0_16px_32px_-24px_rgba(17,18,20,0.18)] backdrop-blur-md"
+                className="absolute right-[10%] top-[12%] z-20 rounded-full border border-black/8 bg-white/72 px-4 py-2 shadow-[0_16px_32px_-24px_rgba(17,18,20,0.18)] backdrop-blur-md will-change-transform transform-gpu"
               >
                 <span className="brand-chip text-ink/44">Tiny Drama</span>
               </motion.div>
@@ -211,7 +203,7 @@ export default function Loading() {
               <motion.div
                 animate={reduce ? undefined : { y: [0, 10, 0], rotate: [-7, -5, -7] }}
                 transition={{ duration: 5.8, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute bottom-[8%] left-[6%] z-20 rounded-full border border-black/8 bg-white/72 px-4 py-2 shadow-[0_16px_32px_-24px_rgba(17,18,20,0.18)] backdrop-blur-md"
+                className="absolute bottom-[8%] left-[6%] z-20 rounded-full border border-black/8 bg-white/72 px-4 py-2 shadow-[0_16px_32px_-24px_rgba(17,18,20,0.18)] backdrop-blur-md will-change-transform transform-gpu"
               >
                 <span className="brand-chip text-ink/44">Still Worth It</span>
               </motion.div>

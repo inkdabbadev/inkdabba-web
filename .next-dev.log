@@ -1,0 +1,49 @@
+
+> inkdabba-website@0.1.0 dev
+> next dev -H 0.0.0.0
+
+  ▲ Next.js 14.2.5
+  - Local:        http://localhost:3000
+  - Network:      http://0.0.0.0:3000
+
+ ✓ Starting...
+ ✓ Ready in 2.1s
+ ○ Compiling / ...
+ ✓ Compiled / in 4.6s (1322 modules)
+ GET / 200 in 4828ms
+ ✓ Compiled in 566ms (654 modules)
+ GET / 200 in 62ms
+ GET / 200 in 43ms
+ GET / 200 in 45ms
+ GET / 200 in 43ms
+ GET / 200 in 30ms
+ GET / 200 in 33ms
+ GET / 200 in 35ms
+ ✓ Compiled in 671ms (1304 modules)
+ GET / 200 in 316ms
+ ✓ Compiled in 464ms (1304 modules)
+ GET / 200 in 266ms
+ ✓ Compiled in 701ms (1304 modules)
+ GET / 200 in 164ms
+ ✓ Compiled in 766ms (1304 modules)
+ ✓ Compiled in 465ms (1304 modules)
+ ✓ Compiled in 799ms (1303 modules)
+ ✓ Compiled /_not-found in 321ms (1292 modules)
+ GET /logo/inkdabba.svg 404 in 524ms
+ GET / 200 in 73ms
+ ✓ Compiled in 1146ms (1305 modules)
+ GET / 200 in 293ms
+ ✓ Compiled in 761ms (1305 modules)
+ GET / 200 in 291ms
+ GET / 200 in 57ms
+ GET / 200 in 51ms
+ ✓ Compiled in 1317ms (1305 modules)
+ ✓ Compiled in 879ms (1305 modules)
+ GET / 200 in 256ms
+ ✓ Compiled /spatial-design in 343ms (1294 modules)
+ ✓ Compiled /_not-found in 161ms (654 modules)
+ GET /logo/inkdabba.svg 404 in 468ms
+ ✓ Compiled /visuals in 338ms (1297 modules)
+ GET /logo/inkdabba.svg 404 in 120ms
+ GET /logo/inkdabba.svg 404 in 34ms
+ GET /logo/inkdabba.svg 404 in 47ms

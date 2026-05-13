@@ -10,12 +10,12 @@ const socialLinks = ["Instagram", "Twitter", "Behance", "LinkedIn"];
 
 export default function Footer() {
   return (
-    <footer className="relative bg-ink-black pt-24 pb-12 overflow-hidden border-t border-warm-white/10">
+    <footer className="relative bg-ink-black pt-14 pb-12 overflow-hidden border-t border-warm-white/10 md:pt-16">
 
       <div className="relative z-10 max-w-[92%] mx-auto">
         {/* Headline removed as it's redundant with ContactSection */}
 
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-12 border-t border-warm-white/20 pt-12">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
 
           {/* Studio Info */}
           <div className="md:col-span-2">
@@ -33,7 +33,7 @@ export default function Footer() {
             <ul className="flex flex-col gap-3">
               {quickLinks.map(link => (
                 <li key={link}>
-                  <Link href={`#${link.toLowerCase()}`} className="font-body text-warm-white hover:text-vermilion transition-colors uppercase text-sm tracking-wider">
+                  <Link href={`#${link.toLowerCase()}`} className="font-body text-warm-white hover:text-cmyk-cyan transition-colors uppercase text-sm tracking-wider">
                     {link}
                   </Link>
                 </li>
@@ -47,7 +47,7 @@ export default function Footer() {
             <ul className="flex flex-col gap-3">
               {socialLinks.map(link => (
                 <li key={link}>
-                  <a href="#" className="font-body text-warm-white hover:text-vermilion transition-colors uppercase text-sm tracking-wider">
+                  <a href="#" className="font-body text-warm-white hover:text-cmyk-magenta transition-colors uppercase text-sm tracking-wider">
                     {link}
                   </a>
                 </li>

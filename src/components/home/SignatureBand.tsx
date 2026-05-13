@@ -109,7 +109,7 @@ export default function SignatureBand() {
             {[...Array(3)].map((_, i) => (
               <div key={i} className="flex items-center">
                 {words2.map((word, j) => (
-                  <span key={`${i}-${j}`} className="font-display text-6xl md:text-[8rem] px-4 md:px-8 text-transparent uppercase leading-[0.8] tracking-tighter hover:text-vermilion hover:[-webkit-text-stroke:0px] transition-all duration-500 cursor-crosshair hover:scale-110 drop-shadow-[0_0_15px_rgba(249,102,91,0.05)]" style={{ WebkitTextStroke: "2px #F2E8D8" }}>
+                  <span key={`${i}-${j}`} className="font-display text-6xl md:text-[8rem] px-4 md:px-8 text-transparent uppercase leading-[0.8] tracking-tighter hover:text-cmyk-yellow hover:[-webkit-text-stroke:0px] transition-all duration-500 cursor-crosshair hover:scale-110 drop-shadow-[0_0_15px_rgba(0,174,239,0.08)]" style={{ WebkitTextStroke: "2px #F2E8D8" }}>
                     {word}
                   </span>
                 ))}

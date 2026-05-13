@@ -125,15 +125,15 @@ function ProjectCard({ i, project, progress, range, targetScale, setVariant }: a
           <div className="mt-12 flex flex-col gap-8 relative z-10">
             <div className="grid grid-cols-2 gap-y-8 gap-x-4 border-t-2 border-ink-black/20 pt-8">
               <div>
-                <span className="font-body text-[0.6rem] font-bold tracking-[0.3em] uppercase text-vermilion mb-2 block">Type</span>
+                <span className="font-body text-[0.6rem] font-bold tracking-[0.3em] uppercase text-cmyk-cyan mb-2 block">Type</span>
                 <p className="font-body text-sm font-bold uppercase">{project.type}</p>
               </div>
               <div>
-                <span className="font-body text-[0.6rem] font-bold tracking-[0.3em] uppercase text-vermilion mb-2 block">Year</span>
+                <span className="font-body text-[0.6rem] font-bold tracking-[0.3em] uppercase text-cmyk-cyan mb-2 block">Year</span>
                 <p className="font-body text-sm font-bold uppercase">{project.year}</p>
               </div>
               <div className="col-span-2">
-                <span className="font-body text-[0.6rem] font-bold tracking-[0.3em] uppercase text-vermilion mb-2 block">Deliverables</span>
+                <span className="font-body text-[0.6rem] font-bold tracking-[0.3em] uppercase text-cmyk-cyan mb-2 block">Deliverables</span>
                 <p className="font-body text-sm font-bold uppercase">{project.deliverables}</p>
               </div>
             </div>

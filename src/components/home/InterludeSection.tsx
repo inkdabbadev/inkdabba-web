@@ -66,7 +66,7 @@ function InterludeText({
     <motion.h3
       className={`absolute text-center font-display uppercase tracking-tight w-full ${
         index === total - 1
-          ? "text-vermilion text-[8vw] md:text-[8rem] lg:text-[10rem] leading-[0.85]"
+          ? "text-cmyk-magenta text-[8vw] md:text-[8rem] lg:text-[10rem] leading-[0.85]"
           : "text-warm-white text-[6vw] md:text-[6rem] lg:text-[8rem] leading-[0.85]"
       }`}
       style={{

@@ -17,25 +17,25 @@ export default function Button({ children, href, variant = "dark", onClick, clas
   const variants = {
     dark: "text-warm-white bg-ink-black border border-white/10 hover:border-transparent",
     light: "text-ink-black bg-warm-white border border-black/10 hover:border-transparent",
-    accent: "text-ink-black bg-vermilion border border-vermilion hover:border-transparent",
+    accent: "text-cmyk-key bg-cmyk-yellow border border-cmyk-yellow hover:border-transparent",
   };
 
   const hoverFills = {
     dark: "bg-warm-white",
-    light: "bg-vermilion",
-    accent: "bg-ink-black",
+    light: "bg-cmyk-cyan",
+    accent: "bg-cmyk-magenta",
   };
 
   const textHoverColors = {
-    dark: "text-ink-black",
-    light: "text-warm-white",
-    accent: "text-warm-white",
+    dark: "group-hover:text-ink-black",
+    light: "group-hover:text-warm-white",
+    accent: "group-hover:text-warm-white",
   };
 
   const content = (
     <>
       <span className={`absolute inset-0 translate-y-[120%] transition-transform duration-500 ease-out group-hover:translate-y-0 ${hoverFills[variant]} rounded-full`} />
-      <span className={`relative z-10 flex items-center gap-3 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:${textHoverColors[variant]}`}>
+      <span className={`relative z-10 flex items-center gap-3 transition-transform duration-300 group-hover:-translate-y-0.5 ${textHoverColors[variant]}`}>
         {children}
         <span className="relative flex items-center justify-center overflow-hidden w-4 h-4 transition-transform duration-300 group-hover:rotate-[-45deg]">
           <span className="block transition-transform duration-300 group-hover:translate-x-4 group-hover:opacity-0">&rarr;</span>

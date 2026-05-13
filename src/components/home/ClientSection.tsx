@@ -49,13 +49,13 @@ export default function ClientSection() {
           <h2 className="font-display text-4xl md:text-6xl lg:text-7xl text-warm-white tracking-wide uppercase mb-6">
             CLIENT PARTNERS
           </h2>
-          <p className="font-body text-sm md:text-base font-bold tracking-[0.3em] uppercase text-vermilion">
+          <p className="font-body text-sm md:text-base font-bold tracking-[0.3em] uppercase text-cmyk-cyan">
             THE UNIVERSE WE BUILT
           </p>
         </div>
 
         {/* Atmospheric glow */}
-        <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_center,rgba(249,102,91,0.05)_0%,transparent_60%)] z-0" />
+        <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(circle_at_center,rgba(0,174,239,0.05)_0%,rgba(236,0,140,0.04)_34%,transparent_64%)] z-0" />
 
         <div className="w-full flex flex-col gap-6 md:gap-8 relative z-10 -rotate-[3deg] scale-[1.05]">
           <MarqueeRow logos={ROW_1} direction="left" speed="45s" setVariant={setVariant} onSelect={setSelectedClient} />
@@ -145,7 +145,7 @@ function MarqueeRow({ logos, direction, speed, setVariant, onSelect }: any) {
             key={`${src}-${i}`}
             onClick={() => onSelect(src)}
             className="relative w-40 h-28 md:w-56 md:h-40 rounded-2xl bg-warm-white flex items-center justify-center p-6 md:p-10 shadow-xl border border-black/10 transition-all duration-500 cursor-none
-              grayscale opacity-50 hover:opacity-100 hover:grayscale-0 hover:scale-[1.01] hover:z-50 hover:shadow-[0_0_60px_rgba(249,102,91,0.4)] hover:-translate-y-3
+              grayscale opacity-50 hover:opacity-100 hover:grayscale-0 hover:scale-[1.01] hover:z-50 hover:shadow-[0_0_60px_rgba(0,174,239,0.35)] hover:-translate-y-3
             "
             onMouseEnter={() => setVariant("VIEW")}
             onMouseLeave={() => setVariant("default")}

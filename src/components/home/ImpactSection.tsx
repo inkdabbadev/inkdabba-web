@@ -29,7 +29,7 @@ export default function ImpactSection() {
           <h2 className="font-display text-[12vw] md:text-[8vw] text-warm-white leading-[0.8] uppercase tracking-tighter">
             WE DON&apos;T DO
           </h2>
-          <h2 className="font-display text-[20vw] md:text-[14vw] text-vermilion leading-[0.8] uppercase tracking-tighter md:ml-24">
+          <h2 className="font-display text-[20vw] md:text-[14vw] text-cmyk-magenta leading-[0.8] uppercase tracking-tighter md:ml-24">
             QUIET.
           </h2>
         </motion.div>
@@ -84,7 +84,7 @@ function StatCounter({ stat, index }: { stat: any, index: number }) {
         {count}
         <span className="text-[15vw] md:text-[10vw] text-transparent" style={{ WebkitTextStroke: "2px #F2E8D8" }}>{stat.suffix}</span>
       </div>
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 font-display text-[10vw] md:text-[6vw] uppercase tracking-tighter text-vermilion opacity-0 group-hover:opacity-100 transition-all duration-500 scale-50 group-hover:scale-100 pointer-events-none">
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 font-display text-[10vw] md:text-[6vw] uppercase tracking-tighter text-cmyk-yellow opacity-0 group-hover:opacity-100 transition-all duration-500 scale-50 group-hover:scale-100 pointer-events-none">
         {stat.label}
       </div>
     </div>

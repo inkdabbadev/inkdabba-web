@@ -1,8 +1,19 @@
 "use client";
 
 import React, { useRef, useState, useEffect } from "react";
-import { motion, useScroll, useTransform, AnimatePresence, useAnimation, AnimationControls } from "framer-motion";
+import {
+  motion,
+  useScroll,
+  useTransform,
+  AnimatePresence,
+  useAnimation,
+  AnimationControls,
+  useMotionValue,
+  useReducedMotion,
+  useSpring,
+} from "framer-motion";
 import Image from "next/image";
+import InfiniteGridBackground from "@/components/ui/infinite-grid-integration";
 
 const curiousPhrases = [
   "What happens when you break the frame?",
@@ -35,38 +46,55 @@ function InteractiveEye({
   pupilSize = "35%",
   blinkControls
 }: InteractiveEyeProps) {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const eyeRef = useRef<HTMLDivElement>(null);
+  const boundsRef = useRef<DOMRect | null>(null);
+  const reduceMotion = useReducedMotion();
+  const targetX = useMotionValue(0);
+  const targetY = useMotionValue(0);
+  const x = useSpring(targetX, { stiffness: 320, damping: 28, mass: 0.45 });
+  const y = useSpring(targetY, { stiffness: 320, damping: 28, mass: 0.45 });
+  const pupilX = useTransform(x, (latest) => latest * 0.4);
+  const pupilY = useTransform(y, (latest) => latest * 0.4);
 
   useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      setMousePosition({ x: e.clientX, y: e.clientY });
+    if (reduceMotion) {
+      return;
+    }
+
+    const updateBounds = () => {
+      boundsRef.current = eyeRef.current?.getBoundingClientRect() ?? null;
     };
-    window.addEventListener("mousemove", handleMouseMove);
-    return () => window.removeEventListener("mousemove", handleMouseMove);
-  }, []);
 
-  const calculatePupilTransform = () => {
-    if (!eyeRef.current) return { x: 0, y: 0 };
-    const rect = eyeRef.current.getBoundingClientRect();
-    const eyeCenterX = rect.left + rect.width / 2;
-    const eyeCenterY = rect.top + rect.height / 2;
+    const handlePointerMove = (event: PointerEvent) => {
+      const rect = boundsRef.current;
+      if (!rect) {
+        return;
+      }
 
-    const angle = Math.atan2(mousePosition.y - eyeCenterY, mousePosition.x - eyeCenterX);
+      const eyeCenterX = rect.left + rect.width / 2;
+      const eyeCenterY = rect.top + rect.height / 2;
+      const angle = Math.atan2(event.clientY - eyeCenterY, event.clientX - eyeCenterX);
+      const maxDistance = rect.width * 0.25;
+      const distance = Math.min(
+        maxDistance,
+        Math.hypot(event.clientX - eyeCenterX, event.clientY - eyeCenterY) / 25
+      );
 
-    // Calculate max distance based on container size
-    const maxDistance = rect.width * 0.25;
-    const distance = Math.min(
-      maxDistance,
-      Math.hypot(mousePosition.x - eyeCenterX, mousePosition.y - eyeCenterY) / 25
-    );
+      targetX.set(Math.cos(angle) * distance);
+      targetY.set(Math.sin(angle) * distance);
+    };
 
-    const x = Math.cos(angle) * distance;
-    const y = Math.sin(angle) * distance;
-    return { x, y };
-  };
+    updateBounds();
+    window.addEventListener("pointermove", handlePointerMove, { passive: true });
+    window.addEventListener("resize", updateBounds, { passive: true });
+    window.addEventListener("scroll", updateBounds, { passive: true });
 
-  const { x, y } = calculatePupilTransform();
+    return () => {
+      window.removeEventListener("pointermove", handlePointerMove);
+      window.removeEventListener("resize", updateBounds);
+      window.removeEventListener("scroll", updateBounds);
+    };
+  }, [reduceMotion, targetX, targetY]);
 
   return (
     <div
@@ -82,7 +110,7 @@ function InteractiveEye({
       {/* The Eye Container */}
       <motion.div
         ref={eyeRef}
-        className="relative w-full h-full rounded-full flex items-center justify-center overflow-hidden"
+        className="relative w-full h-full rounded-full flex items-center justify-center overflow-hidden will-change-transform transform-gpu"
         style={{ backgroundColor: containerColor, originY: 0.5 }}
         animate={blinkControls}
         initial={{ scaleY: 1 }}
@@ -90,16 +118,12 @@ function InteractiveEye({
         {/* The Iris (moving part) */}
         <motion.div
           className="rounded-full flex items-center justify-center"
-          style={{ width: irisSize, height: irisSize, backgroundColor: irisColor }}
-          animate={{ x, y }}
-          transition={{ type: "spring", stiffness: 300, damping: 20, mass: 1 }}
+          style={{ width: irisSize, height: irisSize, backgroundColor: irisColor, x, y }}
         >
           {/* The Pupil (moves dynamically inside the iris) */}
           <motion.div 
             className="rounded-full" 
-            style={{ width: pupilSize, height: pupilSize, backgroundColor: pupilColor }} 
-            animate={{ x: x * 0.4, y: y * 0.4 }}
-            transition={{ type: "spring", stiffness: 400, damping: 25, mass: 0.5 }}
+            style={{ width: pupilSize, height: pupilSize, backgroundColor: pupilColor, x: pupilX, y: pupilY }} 
           />
         </motion.div>
       </motion.div>
@@ -111,8 +135,13 @@ export default function HeroSection() {
   const containerRef = useRef<HTMLElement>(null);
   const [phraseIndex, setPhraseIndex] = useState(0);
   const blinkControls = useAnimation();
+  const reduceMotion = useReducedMotion();
 
   useEffect(() => {
+    if (reduceMotion) {
+      return;
+    }
+
     let isActive = true;
 
     const blinkRoutine = async () => {
@@ -144,14 +173,18 @@ export default function HeroSection() {
     blinkRoutine();
 
     return () => { isActive = false; };
-  }, [blinkControls]);
+  }, [blinkControls, reduceMotion]);
 
   useEffect(() => {
+    if (reduceMotion) {
+      return;
+    }
+
     const interval = setInterval(() => {
       setPhraseIndex((prev) => (prev + 1) % curiousPhrases.length);
     }, 4000);
     return () => clearInterval(interval);
-  }, []);
+  }, [reduceMotion]);
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -164,15 +197,17 @@ export default function HeroSection() {
 
   return (
     <section ref={containerRef} className="relative min-h-screen w-full flex flex-col items-center justify-center overflow-hidden bg-ink-black pt-20 perspective-1000">
+      <InfiniteGridBackground className="z-0" />
+
       <motion.div
-        className="relative z-10 flex flex-col items-center text-center px-4 max-w-5xl mx-auto w-full"
+        className="relative z-10 flex flex-col items-center text-center px-4 max-w-5xl mx-auto w-full will-change-transform transform-gpu"
         style={{ y: heroY, opacity: heroOpacity, scale: heroScale }}
       >
         <motion.div
-          className="relative w-[85vw] md:w-[60vw] max-w-[800px] aspect-[4/1] mb-12 flex justify-center items-center"
-          initial={{ opacity: 0, y: 30, filter: "blur(10px)" }}
-          animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-          transition={{ duration: 1.5, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
+          className="relative w-[85vw] md:w-[60vw] max-w-[800px] aspect-[4/1] mb-12 flex justify-center items-center will-change-transform transform-gpu"
+          initial={{ opacity: 0, y: 26, scale: 0.985 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          transition={{ duration: 1.05, ease: [0.16, 1, 0.3, 1], delay: 0.18 }}
         >
           <Image
             src="/logo/inkdabba-white.svg"
@@ -211,7 +246,7 @@ export default function HeroSection() {
           className="font-body text-warm-paper/70 text-sm md:text-lg max-w-md mx-auto mb-14 leading-relaxed"
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1.2, delay: 1.2, ease: [0.16, 1, 0.3, 1] }}
+          transition={{ duration: 0.8, delay: 0.95, ease: [0.16, 1, 0.3, 1] }}
         >
           Posters, logos, campaigns and brand systems built to grab attention instantly.
         </motion.p>
@@ -220,15 +255,15 @@ export default function HeroSection() {
           className="mt-12 flex flex-col items-center justify-center gap-4 h-12"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 1.5, delay: 1.8 }}
+          transition={{ duration: 0.75, delay: 1.35 }}
         >
           <AnimatePresence mode="wait">
             <motion.p
               key={phraseIndex}
-              initial={{ opacity: 0, y: 10, filter: "blur(4px)" }}
-              animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-              exit={{ opacity: 0, y: -10, filter: "blur(4px)" }}
-              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+              initial={{ opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -8 }}
+              transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
               className="font-body text-xs md:text-sm font-medium tracking-[0.2em] uppercase text-warm-white/60 text-center"
             >
               {curiousPhrases[phraseIndex]}

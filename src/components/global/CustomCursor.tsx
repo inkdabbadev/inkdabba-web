@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { motion, useMotionValue, useSpring } from "framer-motion";
 import { useCursor } from "@/context/CursorContext";
 
@@ -11,78 +11,81 @@ export default function CustomCursor() {
   const cursorX = useMotionValue(-100);
   const cursorY = useMotionValue(-100);
 
-  const springConfig = { damping: 25, stiffness: 400, mass: 0.5 };
+  const springConfig = useMemo(() => ({ damping: 30, stiffness: 520, mass: 0.45 }), []);
   const cursorXSpring = useSpring(cursorX, springConfig);
   const cursorYSpring = useSpring(cursorY, springConfig);
 
   useEffect(() => {
     // Check if device is touch or coarse pointer
-    const checkMobile = () => {
-      setIsMobile(window.matchMedia("(pointer: coarse)").matches);
-    };
+    const pointerQuery = window.matchMedia("(pointer: coarse)");
+    const checkMobile = () => setIsMobile(pointerQuery.matches);
+
     checkMobile();
-    window.addEventListener("resize", checkMobile);
+    pointerQuery.addEventListener("change", checkMobile);
 
-    const moveCursor = (e: MouseEvent) => {
-      cursorX.set(e.clientX);
-      cursorY.set(e.clientY);
+    const moveCursor = (event: PointerEvent) => {
+      cursorX.set(event.clientX);
+      cursorY.set(event.clientY);
     };
 
-    window.addEventListener("mousemove", moveCursor);
+    window.addEventListener("pointermove", moveCursor, { passive: true });
 
     return () => {
-      window.removeEventListener("resize", checkMobile);
-      window.removeEventListener("mousemove", moveCursor);
+      pointerQuery.removeEventListener("change", checkMobile);
+      window.removeEventListener("pointermove", moveCursor);
     };
   }, [cursorX, cursorY]);
 
-  if (isMobile) return null;
+  const variants = useMemo(
+    () => ({
+      default: {
+        width: 12,
+        height: 12,
+        backgroundColor: "#FFF4E6",
+        mixBlendMode: "difference" as const,
+        opacity: 1,
+      },
+      VIEW: {
+        width: 80,
+        height: 80,
+        backgroundColor: "#FFF4E6",
+        mixBlendMode: "normal" as const,
+        opacity: 1,
+      },
+      ENTER: {
+        width: 80,
+        height: 80,
+        backgroundColor: "#00AEEF",
+        mixBlendMode: "normal" as const,
+        opacity: 1,
+      },
+      DRAG: {
+        width: 80,
+        height: 80,
+        backgroundColor: "#11100E",
+        border: "1px solid #FFF4E6",
+        mixBlendMode: "normal" as const,
+        opacity: 1,
+      },
+      BRAND: {
+        width: 80,
+        height: 80,
+        backgroundColor: "#FFF200",
+        mixBlendMode: "normal" as const,
+        opacity: 1,
+      },
+      START: {
+        width: 80,
+        height: 80,
+        backgroundColor: "#EC0080",
+        mixBlendMode: "normal" as const,
+        opacity: 1,
+      },
+    }),
+    [],
+  );
 
-  const variants = {
-    default: {
-      width: 12,
-      height: 12,
-      backgroundColor: "#FFF4E6",
-      mixBlendMode: "difference" as const,
-      opacity: 1,
-    },
-    VIEW: {
-      width: 80,
-      height: 80,
-      backgroundColor: "#FFF4E6",
-      mixBlendMode: "normal" as const,
-      opacity: 1,
-    },
-    ENTER: {
-      width: 80,
-      height: 80,
-      backgroundColor: "#FF4D1D", // vermilion
-      mixBlendMode: "normal" as const,
-      opacity: 1,
-    },
-    DRAG: {
-      width: 80,
-      height: 80,
-      backgroundColor: "#11100E",
-      border: "1px solid #FFF4E6",
-      mixBlendMode: "normal" as const,
-      opacity: 1,
-    },
-    BRAND: {
-      width: 80,
-      height: 80,
-      backgroundColor: "#C7FF3D", // acid
-      mixBlendMode: "normal" as const,
-      opacity: 1,
-    },
-    START: {
-      width: 80,
-      height: 80,
-      backgroundColor: "#FF2DAA", // hot pink
-      mixBlendMode: "normal" as const,
-      opacity: 1,
-    },
-  };
+  if (isMobile) return null;
 
   const getCursorText = () => {
     switch (variant) {
@@ -97,10 +100,10 @@ export default function CustomCursor() {
 
   return (
     <motion.div
-      className="fixed top-0 left-0 z-[9999] flex items-center justify-center rounded-full pointer-events-none overflow-hidden origin-center"
+      className="fixed top-0 left-0 z-[9999] flex items-center justify-center rounded-full pointer-events-none overflow-hidden origin-center will-change-transform transform-gpu"
       variants={variants}
       animate={variant}
-      transition={{ type: "spring", stiffness: 300, damping: 28 }}
+      transition={{ type: "spring", stiffness: 360, damping: 32, mass: 0.5 }}
       style={{
         x: cursorXSpring,
         y: cursorYSpring,

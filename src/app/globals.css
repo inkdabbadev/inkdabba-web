@@ -10,6 +10,10 @@
   --warm-paper: #F2E8D8;
   --warm-white: #FFF4E6;
   --pure-black: #11100E;
+  --cmyk-cyan: #00AEEF;
+  --cmyk-magenta: #EC0080;
+  --cmyk-yellow: #FFF200;
+  --cmyk-key: #0B0A09;
 
   --ink: #08090c;
   --paper: #f2efe7;
@@ -60,8 +64,8 @@
   }
 
   ::selection {
-    background: var(--warm-white);
-    color: var(--pure-black);
+    background: var(--cmyk-yellow);
+    color: var(--cmyk-key);
   }
 }
 
@@ -130,7 +134,7 @@
     transform: scaleX(0.2);
     transform-origin: left center;
     opacity: 0;
-    background: linear-gradient(90deg, rgba(249, 102, 91, 0.72), rgba(8, 9, 12, 0.12));
+    background: linear-gradient(90deg, var(--cmyk-cyan), var(--cmyk-magenta), var(--cmyk-yellow));
     transition:
       opacity 220ms ease,
       transform 320ms cubic-bezier(0.22, 1, 0.36, 1);
@@ -140,6 +144,13 @@
   .brand-nav-link:focus-visible::after {
     transform: scaleX(1);
     opacity: 1;
+  }
+
+  .cmyk-type-shadow {
+    text-shadow:
+      -0.04em 0 var(--cmyk-cyan),
+      0.04em 0 var(--cmyk-magenta),
+      0 0.04em rgba(255, 242, 0, 0.72);
   }
 }
 

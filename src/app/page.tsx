@@ -21,11 +21,9 @@ export const metadata: Metadata = {
 };
 
 import HeroSection from "@/components/home/HeroSection";
-import AboutSection from "@/components/home/AboutSection";
-import SelectedWorkSection from "@/components/home/SelectedWorkSection";
-import SignatureBand from "@/components/home/SignatureBand";
+import ServicesSection from "@/components/home/ServicesSection";
+import DifferenceSection from "@/components/home/DifferenceSection";
 import ClientSection from "@/components/home/ClientSection";
-import InterludeSection from "@/components/home/InterludeSection";
 import ContactSection from "@/components/home/ContactSection";
 import Footer from "@/components/global/Footer";
 
@@ -66,24 +64,19 @@ export default async function Home() {
       />
 
       <main className="flex flex-col bg-ink-black text-warm-white">
+        {/* 1st Page: Hero Section */}
         <HeroSection />
 
-        {/* ClientSection moved right after Hero as requested */}
+        {/* 2nd Page: What We Offer (Visuals & Spatial Design Grids) */}
+        <ServicesSection />
+
+        {/* 3rd Page: What Makes InkDabba Different */}
+        <DifferenceSection />
+
+        {/* 4th Page: Our Clients */}
         <ClientSection />
 
-        <InterludeSection
-          texts={[
-            "NOT EVERY DESIGN NEEDS EXPLANATION.",
-            "SOME BRANDS WHISPER.",
-            "WE MAKE THEM LOUD.",
-            "KEEP SCROLLING"
-          ]}
-        />
-
-        <SelectedWorkSection />
-
-        <SignatureBand />
-
+        {/* 5th Page: Contact Form */}
         <ContactSection />
 
         <Footer />

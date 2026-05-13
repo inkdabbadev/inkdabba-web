@@ -22,7 +22,7 @@ export default function ContactSection() {
             >
               <h2 className="font-display text-6xl md:text-7xl lg:text-[6rem] uppercase text-warm-white leading-[0.9] tracking-tighter drop-shadow-lg">
                 LET&apos;S BUILD <br />
-                <span className="text-vermilion">SOMETHING</span> <br />
+                <span className="text-cmyk-magenta">SOMETHING</span> <br />
                 PEOPLE CAN&apos;T <br />
                 <span className="text-transparent" style={{ WebkitTextStroke: "2px #F2E8D8" }}>IGNORE.</span>
               </h2>
@@ -34,11 +34,11 @@ export default function ContactSection() {
               <span className="font-body text-[0.65rem] font-bold tracking-[0.3em] uppercase text-warm-white/40">Direct Line</span>
               <a href="mailto:hello@inkdabba.com" className="group relative font-display text-3xl md:text-4xl text-warm-white w-fit overflow-hidden">
                 <span className="relative z-10 transition-colors duration-500 group-hover:text-ink-black">hello@inkdabba.com</span>
-                <div className="absolute inset-0 bg-vermilion translate-y-[100%] transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-y-0" />
+                <div className="absolute inset-0 bg-cmyk-cyan translate-y-[100%] transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-y-0" />
               </a>
               <a href="https://wa.me/1234567890" className="group relative font-display text-3xl md:text-4xl text-warm-white w-fit overflow-hidden mt-2">
                 <span className="relative z-10 transition-colors duration-500 group-hover:text-ink-black">WhatsApp Us</span>
-                <div className="absolute inset-0 bg-warm-white translate-y-[100%] transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-y-0" />
+                <div className="absolute inset-0 bg-cmyk-yellow translate-y-[100%] transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-y-0" />
               </a>
             </div>
           </div>
@@ -50,9 +50,9 @@ export default function ContactSection() {
               <FormRow>
                 <div className="leading-[2.2] md:leading-[2.5]">
                   <span className="align-middle">Hi inkdabba, I am </span>
-                  <input type="text" placeholder="YOUR NAME" className="bg-transparent border-b-[2px] border-warm-white/20 text-vermilion placeholder:text-warm-white/20 focus:outline-none focus:border-vermilion transition-all duration-300 w-32 md:w-48 mx-2 md:mx-3 text-center rounded-none shadow-none inline-block align-middle" required />
+                  <input type="text" placeholder="YOUR NAME" className="bg-transparent border-b-[2px] border-warm-white/20 text-cmyk-cyan placeholder:text-warm-white/20 focus:outline-none focus:border-cmyk-cyan transition-all duration-300 w-32 md:w-48 mx-2 md:mx-3 text-center rounded-none shadow-none inline-block align-middle" required />
                   <span className="align-middle">, and I represent </span>
-                  <input type="text" placeholder="COMPANY" className="bg-transparent border-b-[2px] border-warm-white/20 text-vermilion placeholder:text-warm-white/20 focus:outline-none focus:border-vermilion transition-all duration-300 w-32 md:w-48 mx-2 md:mx-3 text-center rounded-none shadow-none inline-block align-middle" required />
+                  <input type="text" placeholder="COMPANY" className="bg-transparent border-b-[2px] border-warm-white/20 text-cmyk-magenta placeholder:text-warm-white/20 focus:outline-none focus:border-cmyk-magenta transition-all duration-300 w-32 md:w-48 mx-2 md:mx-3 text-center rounded-none shadow-none inline-block align-middle" required />
                   <span className="align-middle">.</span>
                 </div>
               </FormRow>
@@ -60,9 +60,9 @@ export default function ContactSection() {
               <FormRow>
                 <div className="leading-[2.2] md:leading-[2.5]">
                   <span className="align-middle">We are looking to build a </span>
-                  <input type="text" placeholder="PROJECT TYPE" className="bg-transparent border-b-[2px] border-warm-white/20 text-vermilion placeholder:text-warm-white/20 focus:outline-none focus:border-vermilion transition-all duration-300 w-40 md:w-56 mx-2 md:mx-3 text-center rounded-none shadow-none inline-block align-middle" required />
+                  <input type="text" placeholder="PROJECT TYPE" className="bg-transparent border-b-[2px] border-warm-white/20 text-cmyk-yellow placeholder:text-warm-white/20 focus:outline-none focus:border-cmyk-yellow transition-all duration-300 w-40 md:w-56 mx-2 md:mx-3 text-center rounded-none shadow-none inline-block align-middle" required />
                   <span className="align-middle">that makes people feel </span>
-                  <input type="text" placeholder="EMOTION" className="bg-transparent border-b-[2px] border-warm-white/20 text-vermilion placeholder:text-warm-white/20 focus:outline-none focus:border-vermilion transition-all duration-300 w-32 md:w-40 mx-2 md:mx-3 text-center rounded-none shadow-none inline-block align-middle" required />
+                  <input type="text" placeholder="EMOTION" className="bg-transparent border-b-[2px] border-warm-white/20 text-cmyk-cyan placeholder:text-warm-white/20 focus:outline-none focus:border-cmyk-cyan transition-all duration-300 w-32 md:w-40 mx-2 md:mx-3 text-center rounded-none shadow-none inline-block align-middle" required />
                   <span className="align-middle">.</span>
                 </div>
               </FormRow>
@@ -70,7 +70,7 @@ export default function ContactSection() {
               <FormRow>
                 <div className="leading-[2.2] md:leading-[2.5]">
                   <span className="align-middle">You can reach me at </span>
-                  <input type="email" placeholder="EMAIL ADDRESS" className="bg-transparent border-b-[2px] border-warm-white/20 text-vermilion placeholder:text-warm-white/20 focus:outline-none focus:border-vermilion transition-all duration-300 w-56 md:w-72 mx-2 md:mx-3 text-center rounded-none shadow-none inline-block align-middle" required />
+                  <input type="email" placeholder="EMAIL ADDRESS" className="bg-transparent border-b-[2px] border-warm-white/20 text-cmyk-magenta placeholder:text-warm-white/20 focus:outline-none focus:border-cmyk-magenta transition-all duration-300 w-56 md:w-72 mx-2 md:mx-3 text-center rounded-none shadow-none inline-block align-middle" required />
                   <span className="align-middle">to discuss this further.</span>
                 </div>
               </FormRow>
@@ -78,7 +78,7 @@ export default function ContactSection() {
               <div className="mt-8 flex justify-start">
                 <button type="submit" className="relative inline-flex items-center justify-center px-10 py-4 overflow-hidden font-body text-xs font-bold tracking-[0.3em] text-ink-black bg-warm-white rounded-full group cursor-none transition-all duration-300">
                   <span className="relative z-10 transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:-translate-y-[200%]">SEND IT</span>
-                  <span className="absolute inset-0 flex items-center justify-center translate-y-[100%] transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-y-0 text-warm-white bg-vermilion z-10">
+                  <span className="absolute inset-0 flex items-center justify-center translate-y-[100%] transition-transform duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-y-0 text-cmyk-key bg-cmyk-yellow z-10">
                     SEND IT
                   </span>
                 </button>

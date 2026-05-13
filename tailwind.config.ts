@@ -20,6 +20,12 @@ const config: Config = {
         vermilion: "#FF4D1D",
         acid: "#C7FF3D",
         "hot-pink": "#FF2DAA",
+        cmyk: {
+          cyan: "#00AEEF",
+          magenta: "#EC0080",
+          yellow: "#FFF200",
+          key: "#0B0A09",
+        },
 
         // Existing tokens
         paper: "#F2EFE7",
